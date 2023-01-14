@@ -1,0 +1,32 @@
+def strAdd(val1, val2):
+    val1 = val1[::-1]
+    val2 = val2[::-1]
+    if len(val2) > len(val1):
+        diff = len(val2) - len(val1)
+        val1 += '0'*diff
+    else:
+        diff = len(val1) - len(val2)
+        val2 += '0' * diff
+
+
+    looper = len(val2)
+    next = 0
+    sum = []
+    for i in range(looper):
+        temp_sum = (int(val1[i])  + int(val2[i]))
+        if temp_sum+next < 10:
+            sum.insert(0,(temp_sum) + next)
+            next = 0
+            #print(' if ', (temp_sum) + next)
+        else:
+            sum.insert(0,(temp_sum+ next)%10)
+            #print('else  ', (temp_sum) + next)
+            next = 1
+    left = len(val2) if len(val2) > len(val1) else len(val1)
+    for i in sum:print(i,end='')
+    print()
+
+
+
+strAdd('144543', '73489')
+print(144543+73489)
